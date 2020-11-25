@@ -1,47 +1,65 @@
-import React from "react";
-import Search from "./Search";
+import React, { useState } from "react";
+import axios from "axios";
 
 import "./CurrentWeather.css";
 
-export default function CurrentWeather() {
+export default function CurrentWeather(props) {
+  let [currentCity, setCurrentCity] = useState(null);
+  let [temperature, setTemperature] = useState(null);
+  let [description, setDescription] = useState(null);
+  let [humidity, setHumidity] = useState(null);
+  let [wind, setWind] = useState(null);
+  let [icon, setIcon] = useState(null);
+
+  let iconImage = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+
+  function checkWeather(response) {
+    setCurrentCity(response.data.name);
+    setTemperature(response.data.main.temp);
+    setDescription(response.data.weather[0].main);
+    setHumidity(response.data.main.humidity);
+    setWind(response.data.wind.speed);
+    setIcon(response.data.weather[0].icon);
+  }
+
+  let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
+  let units = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=${units}&appid=${apiKey}`;
+
+  axios.get(apiUrl).then(checkWeather);
+
   return (
     <div className="col-12 col-sm-6 CurrentWeather">
-      <h1 id="current-city">Lisbon</h1>
-      <p className="main-date" id="current-date">
-        Wednesday, Nov 25
-      </p>
+      <h1>{currentCity}</h1>
       <div>
+        <p class="main-date" id="current-date">
+          Wednesday, Nov 25
+        </p>
         <span>Last updated: 09:31</span>
-        <span className="main-time" id="current-time"></span>
+        <span className="main-time"></span>
       </div>
-      <img src="" alt="" className="weather-icon" id="weather-icon" />
+      <img src={iconImage} alt="weathnper icon" className="weather-icon" />
       <p>
-        <span className="temperature-display" id="displayed-temperature">
-          12
-        </span>
+        <span className="temperature-display">{Math.round(temperature)}</span>
         <span className="units-display">
-          <a href="#" id="temperature-celsius" className="active">
+          <a href="/" className="active">
             °C
           </a>{" "}
-          |
-          <a href="#" id="temperature-farenheit">
-            °F
-          </a>
+          |<a href="/">°F</a>
         </span>
       </p>
-      <p className="main-weather-summary" id="current-weather">
-        Sunny
-      </p>
+      <p className="main-weather-summary">{description}</p>
       <div>
-        <span className="main-weather-description">Wind: 10km/h</span>
-        <span id="wind-speed"></span>
+        <span className="main-weather-description">
+          Wind: {Math.round(3.6 * wind)}km/h
+        </span>
+        <span></span>
       </div>
       <div>
-        <span className="main-weather-description">Humidity:100%</span>
-        <span id="humidity"></span>
+        <span className="main-weather-description">Humidity: {humidity}%</span>
+        <span></span>
       </div>
-      <div className="no-position-found" id="no-position-found"></div>
-      <Search />
+      <div className="no-position-found"></div>
     </div>
   );
 }

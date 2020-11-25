@@ -1,5 +1,5 @@
 import "./App.css";
-import CurrentWeather from "./CurrentWeather";
+import Search from "./Search";
 import Forecast from "./Forecast";
 import Coder from "./Coder";
 
@@ -10,7 +10,7 @@ function App() {
         <div className="content">
           <div className="wrapper">
             <div className="row">
-              <CurrentWeather />
+              <Search />
               <Forecast />
             </div>
           </div>
