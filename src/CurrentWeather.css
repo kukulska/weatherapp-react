@@ -1,0 +1,70 @@
+h1 {
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.CurrentWeather {
+  padding: 0;
+  margin: 4em auto 2em auto;
+}
+
+.main-date {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.main-time {
+  font-size: 1em;
+  margin: 0;
+}
+
+.weather-icon {
+  margin: 0.8em;
+}
+
+.temperature-display {
+  font-size: 2em;
+  font-weight: 600;
+  padding: 0;
+}
+
+.units-display {
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0;
+  position: relative;
+  top: -0.8em;
+}
+
+.active {
+  cursor: default;
+}
+
+.active:hover {
+  text-decoration: none;
+}
+
+.main-weather-summary {
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 0;
+  text-transform: capitalize;
+  margin-bottom: 1.5em;
+}
+
+.main-weather-description {
+  font-weight: 400;
+}
+
+.no-position-found {
+  color: rgb(236, 110, 76);
+  font-size: 0.9em;
+  margin-top: 1.5em;
+}
+
+.main-details {
+  padding: 1em;
+  margin: 0.8em 0;
+  text-align: left;
+}
