@@ -9,7 +9,10 @@ export default function Forecast() {
           <span>13:00</span>
         </div>
         <div className="col-4">
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+          <img
+            src="http://openweathermap.org/img/wn/10d@2x.png"
+            alt="weather icon"
+          />
         </div>
         <div className="col-4">
           <span className="lowest-temp">12°C</span>
@@ -22,7 +25,10 @@ export default function Forecast() {
           <span>13:00</span>
         </div>
         <div className="col-4">
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+          <img
+            src="http://openweathermap.org/img/wn/10d@2x.png"
+            alt="weather icon"
+          />
         </div>
         <div className="col-4">
           <span className="lowest-temp">12°C</span>
@@ -35,7 +41,10 @@ export default function Forecast() {
           <span>13:00</span>
         </div>
         <div className="col-4">
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+          <img
+            src="http://openweathermap.org/img/wn/10d@2x.png"
+            alt="weather icon"
+          />
         </div>
         <div className="col-4">
           <span className="lowest-temp">12°C</span>
@@ -48,7 +57,10 @@ export default function Forecast() {
           <span>13:00</span>
         </div>
         <div className="col-4">
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+          <img
+            src="http://openweathermap.org/img/wn/10d@2x.png"
+            alt="weather icon"
+          />
         </div>
         <div className="col-4">
           <span className="lowest-temp">12°C</span>
@@ -61,7 +73,10 @@ export default function Forecast() {
           <span>13:00</span>
         </div>
         <div className="col-4">
-          <img src="http://openweathermap.org/img/wn/10d@2x.png" />
+          <img
+            src="http://openweathermap.org/img/wn/10d@2x.png"
+            alt="weather icon"
+          />
         </div>
         <div className="col-4">
           <span className="lowest-temp">12°C</span>
