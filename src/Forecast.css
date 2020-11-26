@@ -1,5 +1,11 @@
 .Forecast {
-  background-color: lightblue;
   padding: 0;
   margin: 0;
+}
+
+.Forecast .following-day {
+  height: 20%;
+  margin: 0;
+  background: rgba(193, 206, 219, 0.5);
+  color: #455a64;
 }

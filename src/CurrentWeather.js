@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import TemperatureUnits from "./TemperatureUnits";
+
 import "./CurrentWeather.css";
 
 export default function CurrentWeather(props) {
@@ -32,22 +34,16 @@ export default function CurrentWeather(props) {
     <div className="col-12 col-sm-6 CurrentWeather">
       <h1>{currentCity}</h1>
       <div>
-        <p class="main-date" id="current-date">
+        <p className="main-date" id="current-date">
           Wednesday, Nov 25
         </p>
         <span>Last updated: 09:31</span>
         <span className="main-time"></span>
       </div>
       <img src={iconImage} alt="weathnper icon" className="weather-icon" />
-      <p>
-        <span className="temperature-display">{Math.round(temperature)}</span>
-        <span className="units-display">
-          <a href="/" className="active">
-            °C
-          </a>{" "}
-          |<a href="/">°F</a>
-        </span>
-      </p>
+
+      <TemperatureUnits temperature={temperature} />
+
       <p className="main-weather-summary">{description}</p>
       <div>
         <span className="main-weather-description">

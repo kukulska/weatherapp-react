@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CurrentWeather from "./CurrentWeather";
+import Forecast from "./Forecast";
 import "./Search.css";
 
 export default function Search() {
@@ -15,38 +16,41 @@ export default function Search() {
   }
 
   return (
-    <div>
-      <CurrentWeather city={answer} />
-      <div className="Search">
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div className="input-group">
-              <input
-                type="search"
-                placeholder="Type a city..."
-                autofocus="on"
-                autocomplete="off"
-                onChange={updateCity}
-                className="form-control shadow-sm"
-              />
-              <div className="input-group-append">
-                <button
-                  type="submit"
-                  className="btn btn-light shadow-sm btn-outline-secondary"
-                >
-                  Search
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-light shadow-sm btn-outline-secondary"
-                >
-                  Current
-                </button>
+    <div className="row">
+      <div className="col-12 col-sm-6">
+        <CurrentWeather city={answer} />
+        <div className="Search">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <div className="input-group">
+                <input
+                  type="search"
+                  placeholder="Type a city..."
+                  autofocus="on"
+                  autocomplete="off"
+                  onChange={updateCity}
+                  className="form-control shadow-sm"
+                />
+                <div className="input-group-append">
+                  <button
+                    type="submit"
+                    className="btn btn-light shadow-sm btn-outline-secondary"
+                  >
+                    Search
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-light shadow-sm btn-outline-secondary"
+                  >
+                    Current
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
+      <Forecast />
     </div>
   );
 }

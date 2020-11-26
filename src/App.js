@@ -1,6 +1,5 @@
 import "./App.css";
 import Search from "./Search";
-import Forecast from "./Forecast";
 import Coder from "./Coder";
 
 function App() {
@@ -9,10 +8,7 @@ function App() {
       <div className="container">
         <div className="content">
           <div className="wrapper">
-            <div className="row">
-              <Search />
-              <Forecast />
-            </div>
+            <Search />
           </div>
           <Coder />
         </div>
