@@ -26,8 +26,8 @@ export default function Search() {
                 <input
                   type="search"
                   placeholder="Type a city..."
-                  autofocus="on"
-                  autocomplete="off"
+                  autoFocus="on"
+                  autoComplete="off"
                   onChange={updateCity}
                   className="form-control shadow-sm"
                 />
