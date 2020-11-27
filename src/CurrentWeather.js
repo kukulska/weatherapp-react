@@ -24,11 +24,10 @@ export default function CurrentWeather(props) {
     setIcon(response.data.weather[0].icon);
   }
 
-  let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
-  let units = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=${units}&appid=${apiKey}`;
-
   function handleSearch() {
+    let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
+    let units = `metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=${units}&appid=${apiKey}`;
     axios.get(apiUrl).then(checkWeather);
   }
 
