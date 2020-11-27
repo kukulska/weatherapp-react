@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Temperature.css";
 
 export default function Temperature(props) {
@@ -13,6 +13,10 @@ export default function Temperature(props) {
     event.preventDefault();
     setTemperature(props.temperature);
   }
+
+  useEffect(() => {
+    setTemperature(props.temperature);
+  }, [props.temperature]);
 
   return (
     <p className="Temperature">
