@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import TemperatureUnits from "./TemperatureUnits";
+import Temperature from "./Temperature";
 
 import "./CurrentWeather.css";
 
@@ -45,7 +45,7 @@ export default function CurrentWeather(props) {
       </div>
       <img src={iconImage} alt="weathnper icon" className="weather-icon" />
 
-      <TemperatureUnits temperature={temperature} />
+      <Temperature temperature={temperature} />
 
       <p className="main-weather-summary">{description}</p>
       <div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./TemperatureUnits.css";
+import "./Temperature.css";
 
-export default function TemperatureUnits(props) {
+export default function Temperature(props) {
   let [temperature, setTemperature] = useState(props.temperature);
 
   function showFahrenheit(event) {
@@ -15,7 +15,7 @@ export default function TemperatureUnits(props) {
   }
 
   return (
-    <p className="TemperatureUnits">
+    <p className="Temperature">
       <span className="temperature-display">{Math.round(temperature)}</span>
       <span className="units-display">
         <a href="/" className="active" onClick={showCelsius}>
