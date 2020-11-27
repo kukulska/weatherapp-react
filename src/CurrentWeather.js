@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import TemperatureUnits from "./TemperatureUnits";
@@ -24,79 +24,42 @@ export default function CurrentWeather(props) {
     setIcon(response.data.weather[0].icon);
   }
 
-  if (props.city === "Tokyo") {
-    let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
-    let units = `metric`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Tokyo&units=${units}&appid=${apiKey}`;
+  let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
+  let units = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=${units}&appid=${apiKey}`;
 
+  function handleSearch() {
     axios.get(apiUrl).then(checkWeather);
-
-    return (
-      <div className="col-12 col-sm-6 CurrentWeather">
-        <h1>{currentCity}</h1>
-        <div>
-          <p className="main-date" id="current-date">
-            Wednesday, Nov 25
-          </p>
-          <span>Last updated: 09:31</span>
-          <span className="main-time"></span>
-        </div>
-        <img src={iconImage} alt="weathnper icon" className="weather-icon" />
-
-        <TemperatureUnits temperature={temperature} />
-
-        <p className="main-weather-summary">{description}</p>
-        <div>
-          <span className="main-weather-description">
-            Wind: {Math.round(3.6 * wind)}km/h
-          </span>
-          <span></span>
-        </div>
-        <div>
-          <span className="main-weather-description">
-            Humidity: {humidity}%
-          </span>
-          <span></span>
-        </div>
-        <div className="no-position-found"></div>
-      </div>
-    );
-  } else {
-    let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
-    let units = `metric`;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&units=${units}&appid=${apiKey}`;
-
-    axios.get(apiUrl).then(checkWeather);
-
-    return (
-      <div className="col-12 col-sm-6 CurrentWeather">
-        <h1>{currentCity}</h1>
-        <div>
-          <p className="main-date" id="current-date">
-            Wednesday, Nov 25
-          </p>
-          <span>Last updated: 09:31</span>
-          <span className="main-time"></span>
-        </div>
-        <img src={iconImage} alt="weathnper icon" className="weather-icon" />
-
-        <TemperatureUnits temperature={temperature} />
-
-        <p className="main-weather-summary">{description}</p>
-        <div>
-          <span className="main-weather-description">
-            Wind: {Math.round(3.6 * wind)}km/h
-          </span>
-          <span></span>
-        </div>
-        <div>
-          <span className="main-weather-description">
-            Humidity: {humidity}%
-          </span>
-          <span></span>
-        </div>
-        <div className="no-position-found"></div>
-      </div>
-    );
   }
+
+  useEffect(handleSearch, [props.city]);
+
+  return (
+    <div className="col-12 col-sm-6 CurrentWeather">
+      <h1>{currentCity}</h1>
+      <div>
+        <p className="main-date" id="current-date">
+          Wednesday, Nov 25
+        </p>
+        <span>Last updated: 09:31</span>
+        <span className="main-time"></span>
+      </div>
+      <img src={iconImage} alt="weathnper icon" className="weather-icon" />
+
+      <TemperatureUnits temperature={temperature} />
+
+      <p className="main-weather-summary">{description}</p>
+      <div>
+        <span className="main-weather-description">
+          Wind: {Math.round(3.6 * wind)}km/h
+        </span>
+        <span></span>
+      </div>
+      <div>
+        <span className="main-weather-description">Humidity: {humidity}%</span>
+        <span></span>
+      </div>
+      <div className="no-position-found"></div>
+    </div>
+  );
 }
