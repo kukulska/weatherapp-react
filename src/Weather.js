@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
-import "./Search.css";
+import "./Weather.css";
 
-export default function Search() {
+export default function Weather() {
   let [city, setCity] = useState(null);
   let [answer, setAnswer] = useState("Tokyo");
 
@@ -19,7 +19,7 @@ export default function Search() {
     <div className="row">
       <div className="col-12 col-sm-6">
         <CurrentWeather city={answer} />
-        <div className="Search">
+        <div className="Weather">
           <form onSubmit={handleSubmit}>
             <div>
               <div className="input-group">

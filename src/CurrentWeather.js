@@ -6,22 +6,20 @@ import Temperature from "./Temperature";
 import "./CurrentWeather.css";
 
 export default function CurrentWeather(props) {
-  let [currentCity, setCurrentCity] = useState(null);
-  let [temperature, setTemperature] = useState(null);
-  let [description, setDescription] = useState(null);
-  let [humidity, setHumidity] = useState(null);
-  let [wind, setWind] = useState(null);
-  let [icon, setIcon] = useState(null);
+  const [weatherData, setWeatherData] = useState({});
 
-  let iconImage = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  let iconImage = `http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`;
 
   function checkWeather(response) {
-    setCurrentCity(response.data.name);
-    setTemperature(response.data.main.temp);
-    setDescription(response.data.weather[0].main);
-    setHumidity(response.data.main.humidity);
-    setWind(response.data.wind.speed);
-    setIcon(response.data.weather[0].icon);
+    setWeatherData({
+      city: response.data.name,
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
+      icon: response.data.weather[0].icon,
+      wind: response.data.wind.speed,
+    });
   }
 
   function handleSearch() {
@@ -35,7 +33,7 @@ export default function CurrentWeather(props) {
 
   return (
     <div className="col-12 col-sm-6 CurrentWeather">
-      <h1>{currentCity}</h1>
+      <h1>{weatherData.city}</h1>
       <div>
         <p className="main-date" id="current-date">
           Wednesday, Nov 25
@@ -45,17 +43,19 @@ export default function CurrentWeather(props) {
       </div>
       <img src={iconImage} alt="weathnper icon" className="weather-icon" />
 
-      <Temperature temperature={temperature} />
+      <Temperature temperature={weatherData.temperature} />
 
-      <p className="main-weather-summary">{description}</p>
+      <p className="main-weather-summary">{weatherData.description}</p>
       <div>
         <span className="main-weather-description">
-          Wind: {Math.round(3.6 * wind)}km/h
+          Wind: {Math.round(3.6 * weatherData.wind)}km/h
         </span>
         <span></span>
       </div>
       <div>
-        <span className="main-weather-description">Humidity: {humidity}%</span>
+        <span className="main-weather-description">
+          Humidity: {weatherData.humidity}%
+        </span>
         <span></span>
       </div>
       <div className="no-position-found"></div>
