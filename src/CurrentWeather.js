@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+import FormattedDate from "./FormattedDate";
 import Temperature from "./Temperature";
 
 import "./CurrentWeather.css";
@@ -34,13 +35,7 @@ export default function CurrentWeather(props) {
   return (
     <div className="col-12 col-sm-6 CurrentWeather">
       <h1>{weatherData.city}</h1>
-      <div>
-        <p className="main-date" id="current-date">
-          Wednesday, Nov 25
-        </p>
-        <span>Last updated: 09:31</span>
-        <span className="main-time"></span>
-      </div>
+      <FormattedDate date={weatherData.date} />
       <img src={iconImage} alt="weathnper icon" className="weather-icon" />
 
       <Temperature temperature={weatherData.temperature} />

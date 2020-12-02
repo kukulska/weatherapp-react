@@ -5,7 +5,7 @@ import "./Weather.css";
 
 export default function Weather() {
   let [city, setCity] = useState(null);
-  let [answer, setAnswer] = useState("Tokyo");
+  let [answer, setAnswer] = useState("Berlin");
 
   function handleSubmit(event) {
     event.preventDefault();
