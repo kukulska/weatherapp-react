@@ -8,17 +8,6 @@ h1 {
   margin: 4em auto 2em auto;
 }
 
-.main-date {
-  font-size: 1em;
-  font-weight: 400;
-  margin: 0;
-}
-
-.main-time {
-  font-size: 1em;
-  margin: 0;
-}
-
 .weather-icon {
   margin: 0.8em;
 }

@@ -2,16 +2,22 @@ import React, { useEffect, useState } from "react";
 import "./Temperature.css";
 
 export default function Temperature(props) {
-  let [temperature, setTemperature] = useState(props.temperature);
+  const [temperature, setTemperature] = useState(props.temperature);
+  const [celsiusActive, setCelsiusActive] = useState("");
+  const [fahrenheitActive, setFahrenheitActive] = useState("active");
 
   function showFahrenheit(event) {
     event.preventDefault();
     setTemperature(Math.round(props.temperature * (9 / 5) + 32));
+    setCelsiusActive("active");
+    setFahrenheitActive("");
   }
 
   function showCelsius(event) {
     event.preventDefault();
     setTemperature(props.temperature);
+    setFahrenheitActive("active");
+    setCelsiusActive("");
   }
 
   useEffect(() => {
@@ -22,12 +28,12 @@ export default function Temperature(props) {
     <p className="Temperature">
       <span className="temperature-display">{Math.round(temperature)}</span>
       <span className="units-display">
-        <a href="/" className="active" onClick={showCelsius}>
+        <a href="/" className={celsiusActive} onClick={showCelsius}>
           {" "}
           °C{" "}
         </a>
         |
-        <a href="/" onClick={showFahrenheit}>
+        <a href="/" className={fahrenheitActive} onClick={showFahrenheit}>
           {" "}
           °F{" "}
         </a>

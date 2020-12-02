@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./FormattedDate.css";
+
 export default function FormattedDate(props) {
   let now = new Date(props.date);
   let days = [
@@ -40,8 +42,8 @@ export default function FormattedDate(props) {
   }
 
   return (
-    <div>
-      <p className="main-date" id="current-date">
+    <div className="FormattedDate">
+      <p className="main-date">
         {day}, {month} {date}
       </p>
       <span>

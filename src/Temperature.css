@@ -5,17 +5,21 @@
 }
 
 .Temperature .units-display {
+  cursor: default;
   font-size: 1em;
   font-weight: 500;
   padding: 0;
   position: relative;
   top: -0.8em;
+  text-decoration: none;
 }
 
 .Temperature .active {
-  cursor: default;
+  color: blue;
+  cursor: pointer;
 }
 
 .Temperature .active:hover {
   text-decoration: none;
+  cursor: pointer;
 }
