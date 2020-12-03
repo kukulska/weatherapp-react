@@ -5,7 +5,7 @@ import ForecastDisplay from "./ForecastDisplay";
 import "./Forecast.css";
 
 export default function Forecast(props) {
-  const [forecast, setForecast] = useState({});
+  const [forecast, setForecast] = useState(null);
 
   function checkForecast(response) {
     setForecast(response.data);
@@ -20,9 +20,13 @@ export default function Forecast(props) {
 
   useEffect(handleSearch, [props.city]);
 
-  return (
-    <div className="Forecast row">
-      <ForecastDisplay data={forecast.list[0]} />
-    </div>
-  );
+  if (forecast === null) {
+    return null;
+  } else {
+    return (
+      <div className="Forecast row">
+        <ForecastDisplay data={forecast.list[0]} />
+      </div>
+    );
+  }
 }
