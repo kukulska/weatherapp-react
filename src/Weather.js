@@ -50,7 +50,7 @@ export default function Weather() {
           </form>
         </div>
       </div>
-      <Forecast />
+      <Forecast city={answer} />
     </div>
   );
 }

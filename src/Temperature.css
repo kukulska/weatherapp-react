@@ -5,12 +5,16 @@
 }
 
 .Temperature .units-display {
-  cursor: default;
   font-size: 1em;
   font-weight: 500;
   padding: 0;
   position: relative;
   top: -0.8em;
+}
+
+.Temperature a {
+  color: #455a64;
+  cursor: default;
   text-decoration: none;
 }
 

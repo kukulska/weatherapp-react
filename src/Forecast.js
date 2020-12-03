@@ -1,89 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ForecastDisplay from "./ForecastDisplay";
+
 import "./Forecast.css";
 
-export default function Forecast() {
+export default function Forecast(props) {
+  const [forecast, setForecast] = useState({});
+
+  function checkForecast(response) {
+    setForecast(response.data);
+  }
+
+  function handleSearch() {
+    let apiKey = `af3fca1cbd91099bf648ee4accb9419f`;
+    let units = `metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${props.city}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrl).then(checkForecast);
+  }
+
+  useEffect(handleSearch, [props.city]);
+
   return (
-    <div className="col-12 col-sm-6 Forecast">
-      <div className="row following-day align-items-center">
-        <div className="col-4">
-          <span>13:00</span>
-        </div>
-        <div className="col-4">
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
-        </div>
-        <div className="col-4">
-          <span className="lowest-temp">12°C</span>
-          <br />
-          <span className="highest-temp">18°C</span>
-        </div>
-      </div>
-      <div className="row following-day align-items-center">
-        <div className="col-4">
-          <span>13:00</span>
-        </div>
-        <div className="col-4">
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
-        </div>
-        <div className="col-4">
-          <span className="lowest-temp">12°C</span>
-          <br />
-          <span className="highest-temp">18°C</span>
-        </div>
-      </div>
-      <div className="row following-day align-items-center">
-        <div className="col-4">
-          <span>13:00</span>
-        </div>
-        <div className="col-4">
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
-        </div>
-        <div className="col-4">
-          <span className="lowest-temp">12°C</span>
-          <br />
-          <span className="highest-temp">18°C</span>
-        </div>
-      </div>
-      <div className="row following-day align-items-center">
-        <div className="col-4">
-          <span>13:00</span>
-        </div>
-        <div className="col-4">
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
-        </div>
-        <div className="col-4">
-          <span className="lowest-temp">12°C</span>
-          <br />
-          <span className="highest-temp">18°C</span>
-        </div>
-      </div>
-      <div className="row following-day align-items-center">
-        <div className="col-4">
-          <span>13:00</span>
-        </div>
-        <div className="col-4">
-          <img
-            src="http://openweathermap.org/img/wn/10d@2x.png"
-            alt="weather icon"
-          />
-        </div>
-        <div className="col-4">
-          <span className="lowest-temp">12°C</span>
-          <br />
-          <span className="highest-temp">18°C</span>
-        </div>
-      </div>
+    <div className="Forecast row">
+      <ForecastDisplay data={forecast.list[0]} />
     </div>
   );
 }
