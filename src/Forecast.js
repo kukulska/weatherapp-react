@@ -24,8 +24,13 @@ export default function Forecast(props) {
     return null;
   } else {
     return (
-      <div className="Forecast row">
+      <div className="Forecast">
         <ForecastDisplay data={forecast.list[0]} />
+        <ForecastDisplay data={forecast.list[1]} />
+        <ForecastDisplay data={forecast.list[2]} />
+        <ForecastDisplay data={forecast.list[3]} />
+        <ForecastDisplay data={forecast.list[4]} />
+        <ForecastDisplay data={forecast.list[5]} />
       </div>
     );
   }

@@ -36,7 +36,7 @@ export default function CurrentWeather(props) {
     <div className="col-12 col-sm-6 CurrentWeather">
       <h1>{weatherData.city}</h1>
       <FormattedDate date={weatherData.date} />
-      <img src={iconImage} alt="weathnper icon" className="weather-icon" />
+      <img src={iconImage} alt="weather icon" className="weather-icon" />
 
       <Temperature temperature={weatherData.temperature} />
 
