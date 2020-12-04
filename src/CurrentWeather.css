@@ -22,12 +22,7 @@ h1 {
 
 .main-weather-description {
   font-weight: 400;
-}
-
-.no-position-found {
-  color: rgb(236, 110, 76);
-  font-size: 0.9em;
-  margin-top: 1.5em;
+  margin-bottom: 2.5em;
 }
 
 .main-details {

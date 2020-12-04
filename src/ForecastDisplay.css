@@ -1,12 +1,12 @@
 .ForecastDisplay .following-day {
-  height: 20%;
   margin: 0;
   background: rgba(193, 206, 219, 0.5);
   color: #455a64;
 }
 
 .ForecastDisplay .weather-icon {
-  margin: 0;
+  display: block;
+  margin: 0 auto;
 }
 
 .color-day-clear {

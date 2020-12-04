@@ -56,8 +56,8 @@ export default function ForecastDisplay(props) {
       className={`ForecastDisplay row following-day align-items-center ${backgroundColor}`}
     >
       <div className="col-4">{hours()}</div>
-      <div className="col-4">
-        <img src={iconImage} alt="weather icon" className="weather-icon" />
+      <div className="col-4 weather-icon">
+        <img src={iconImage} alt="weather icon" />
       </div>
       <div className="col-4">
         <span className="lowest-temp">{temperatureMin()}</span>

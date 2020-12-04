@@ -33,7 +33,7 @@ export default function CurrentWeather(props) {
   useEffect(handleSearch, [props.city]);
 
   return (
-    <div className="col-12 col-sm-6 CurrentWeather">
+    <div className="CurrentWeather">
       <h1>{weatherData.city}</h1>
       <FormattedDate date={weatherData.date} />
       <img src={iconImage} alt="weather icon" className="weather-icon" />
@@ -41,17 +41,13 @@ export default function CurrentWeather(props) {
       <Temperature temperature={weatherData.temperature} />
 
       <p className="main-weather-summary">{weatherData.description}</p>
-      <div>
-        <span className="main-weather-description">
-          Wind: {Math.round(3.6 * weatherData.wind)}km/h
-        </span>
-        <span></span>
-      </div>
-      <div>
-        <span className="main-weather-description">
-          Humidity: {weatherData.humidity}%
-        </span>
-        <span></span>
+      <div className="main-weather-description">
+        <div>
+          <span>Wind: {Math.round(3.6 * weatherData.wind)}km/h</span>
+        </div>
+        <div>
+          <span>Humidity: {weatherData.humidity}%</span>
+        </div>
       </div>
       <div className="no-position-found"></div>
     </div>

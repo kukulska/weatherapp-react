@@ -10,9 +10,9 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  line-height: normal;
   margin: 6em auto 1em auto;
   max-width: 800px;
-  min-height: 100vh;
   padding: 0;
   text-align: center;
 }
@@ -24,4 +24,14 @@
 
 .App .row {
   margin: 0;
+}
+
+@media (max-width: 575px) {
+  .App {
+    margin: 0.8em;
+  }
+
+  .main-column-1 {
+    margin-bottom: 2.5em;
+  }
 }

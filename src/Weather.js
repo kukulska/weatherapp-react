@@ -5,12 +5,14 @@ import Forecast from "./Forecast";
 import "./Weather.css";
 
 export default function Weather() {
-  let [city, setCity] = useState(null);
-  let [answer, setAnswer] = useState("Berlin");
+  const [city, setCity] = useState(null);
+  const [answer, setAnswer] = useState("Berlin");
+  const [noLocation, setNoLocation] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
     setAnswer(city);
+    setNoLocation(null);
   }
   function updateCity(event) {
     setCity(event.target.value);
@@ -19,6 +21,7 @@ export default function Weather() {
   function getCityByLocation(response) {
     console.log(response.data.name);
     setAnswer(response.data.name);
+    setNoLocation(null);
   }
 
   function showPosition(position) {
@@ -30,16 +33,21 @@ export default function Weather() {
     axios.get(apiUrl).then(getCityByLocation);
   }
 
+  function noPosition() {
+    setNoLocation(`Sorry, we can't get your location, please type a city.`);
+  }
+
   function getCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    navigator.geolocation.getCurrentPosition(showPosition, noPosition);
   }
 
   return (
-    <div className="row">
-      <div className="col-12 col-sm-6">
+    <div className="Weather row">
+      <div className="main-column-1 col-12 col-sm-6">
         <CurrentWeather city={answer} />
-        <div className="Weather">
-          <form onSubmit={handleSubmit}>
+        <div className="no-position-found">{noLocation}</div>
+        <div>
+          <form onSubmit={handleSubmit} className="form">
             <div>
               <div className="input-group">
                 <input
@@ -70,7 +78,9 @@ export default function Weather() {
           </form>
         </div>
       </div>
-      <Forecast city={answer} />
+      <div className="main-column-2 col-12 col-sm-6">
+        <Forecast city={answer} />
+      </div>
     </div>
   );
 }
