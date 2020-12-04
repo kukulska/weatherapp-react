@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import CurrentWeather from "./CurrentWeather";
 import Forecast from "./Forecast";
 import "./Weather.css";
@@ -13,6 +14,24 @@ export default function Weather() {
   }
   function updateCity(event) {
     setCity(event.target.value);
+  }
+
+  function getCityByLocation(response) {
+    console.log(response.data.name);
+    setAnswer(response.data.name);
+  }
+
+  function showPosition(position) {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    let units = "metric";
+    let apiKey = "af3fca1cbd91099bf648ee4accb9419f";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=${units}&appid=${apiKey}`;
+    axios.get(apiUrl).then(getCityByLocation);
+  }
+
+  function getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(showPosition);
   }
 
   return (
@@ -41,6 +60,7 @@ export default function Weather() {
                   <button
                     type="button"
                     className="btn btn-light shadow-sm btn-outline-secondary"
+                    onClick={getCurrentLocation}
                   >
                     Current
                   </button>

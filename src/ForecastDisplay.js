@@ -28,7 +28,7 @@ export default function ForecastDisplay(props) {
     setBackgroundColor(backgroundColors[props.data.weather[0].icon]);
   }
 
-  let backgroundColors = {
+  const backgroundColors = {
     "01d": "color-day-clear",
     "02d": "color-day-clear",
     "03d": "color-day-clouds",
