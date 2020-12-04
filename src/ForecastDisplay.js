@@ -25,29 +25,29 @@ export default function ForecastDisplay(props) {
   let iconImage = `http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
 
   function setColor() {
+    const backgroundColors = {
+      "01d": "color-day-clear",
+      "02d": "color-day-clear",
+      "03d": "color-day-clouds",
+      "04d": "color-day-clouds",
+      "09d": "color-day-clouds",
+      "10d": "color-day-rain",
+      "11d": "color-day-rain",
+      "13d": "color-day-mist-snow",
+      "50d": "color-day-mist-snow",
+      "01n": "color-night-clear",
+      "02n": "color-night-clear",
+      "03n": "color-night-clouds",
+      "04n": "color-night-clouds",
+      "09n": "color-night-clouds",
+      "10n": "color-night-rain",
+      "11n": "color-night-rain",
+      "13n": "color-night-mist-snow ",
+      "50n": "color-night-mist-snow ",
+    };
+
     setBackgroundColor(backgroundColors[props.data.weather[0].icon]);
   }
-
-  const backgroundColors = {
-    "01d": "color-day-clear",
-    "02d": "color-day-clear",
-    "03d": "color-day-clouds",
-    "04d": "color-day-clouds",
-    "09d": "color-day-clouds",
-    "10d": "color-day-rain",
-    "11d": "color-day-rain",
-    "13d": "color-day-mist-snow",
-    "50d": "color-day-mist-snow",
-    "01n": "color-night-clear",
-    "02n": "color-night-clear",
-    "03n": "color-night-clouds",
-    "04n": "color-night-clouds",
-    "09n": "color-night-clouds",
-    "10n": "color-night-rain",
-    "11n": "color-night-rain",
-    "13n": "color-night-mist-snow ",
-    "50n": "color-night-mist-snow ",
-  };
 
   useEffect(setColor, [props.data.weather[0].icon]);
 
