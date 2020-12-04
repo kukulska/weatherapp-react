@@ -20,9 +20,9 @@ export default function ForecastDisplay(props) {
     return `${temperature}°C`;
   }
 
-  const [backgroundColor, setBackgroundColor] = useState(null);
-
   let iconImage = `http://openweathermap.org/img/wn/${props.data.weather[0].icon}@2x.png`;
+
+  const [backgroundColor, setBackgroundColor] = useState(null);
 
   function setColor() {
     const backgroundColors = {
@@ -49,7 +49,7 @@ export default function ForecastDisplay(props) {
     setBackgroundColor(backgroundColors[props.data.weather[0].icon]);
   }
 
-  useEffect(setColor, [props.data.weather[0].icon]);
+  useEffect(setColor, [props.data.weather]);
 
   return (
     <div
